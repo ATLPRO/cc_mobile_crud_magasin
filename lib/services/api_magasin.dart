@@ -6,7 +6,7 @@ class ApiMagasin {
   static const baseUrl = 'http://localhost/cc_mobile_magasin/controller/magasin';
 
   static Future<List<Magasin>> fetchMagasins() async {
-    final response = await http.get(Uri.parse('$baseUrl/getMagasins.php?host=localhost&dbname=licence2025&username=root&password='));
+    final response = await http.get(Uri.parse('$baseUrl/getMagasins.php?host=localhost&dbname=crudmagasinmobile&username=root&password='));
     if (response.statusCode == 200) {
       List jsonList = json.decode(response.body);
       return jsonList.map((e) => Magasin.fromJson(e)).toList();
@@ -17,7 +17,7 @@ class ApiMagasin {
 
   static Future<bool> ajouterMagasin(Magasin magasin) async {
     final response = await http.post(
-      Uri.parse('$baseUrl/createmagasin.php?host=localhost&dbname=licence2025&username=root&password='),
+      Uri.parse('$baseUrl/createmagasin.php?host=localhost&dbname=crudmagasinmobile&username=root&password='),
       headers: {'Content-Type': 'application/json'},
       body: json.encode(magasin.toJson()),
     );
@@ -26,7 +26,7 @@ class ApiMagasin {
 
   static Future<bool> modifierMagasin(Magasin magasin) async {
     final response = await http.put(
-      Uri.parse('$baseUrl/updateMagasin.php?host=localhost&dbname=licence2025&username=root&password='),
+      Uri.parse('$baseUrl/updateMagasin.php?host=localhost&dbname=crudmagasinmobile&username=root&password='),
       headers: {'Content-Type': 'application/json'},
       body: json.encode( {
         "codeMag": magasin.codeMag,
@@ -40,7 +40,7 @@ class ApiMagasin {
 
   static Future<bool> supprimerMagasin(String codeMag) async {
     final response = await http.delete(
-      Uri.parse('$baseUrl/supprimerVirtuellement.php?host=localhost&dbname=licence2025&username=root&password='),
+      Uri.parse('$baseUrl/supprimerVirtuellement.php?host=localhost&dbname=crudmagasinmobile&username=root&password='),
        headers: {'Content-Type': 'application/json'},
       body: json.encode( {"codeMag": codeMag}),
     );
