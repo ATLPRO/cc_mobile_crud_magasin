@@ -1,6 +1,6 @@
 # crudmagasincc
 
-A new Flutter project.
+S'il vous plait veuillez manipulez les deux derniers magasins
 
 ## Getting Started
 
